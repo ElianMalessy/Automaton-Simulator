@@ -1,32 +1,53 @@
 <script lang="ts">
-  import {SvelteUIProvider} from '@svelteuidev/core';
+  import {onMount} from 'svelte/internal';
+  import {setContext} from 'svelte';
+  import {Writable, writable} from 'svelte/store';
+
+  import {key} from './context/key';
+
   import Editor from './components/Editor.svelte';
   import Navbar from './components/Navbar.svelte';
 
-  let isDark: boolean = true;
-  function toggleTheme() {
-    isDark = !isDark;
-  }
+  import '../node_modules/svelte-material-ui/bare.css';
 
-  // const config: SvelteUITheme = {
-  //colorScheme: 'dark',
-  //light: {bg: 'rgb(240, 231, 219)', color: 'rgb(26, 32, 44)'},
-  //dark: {bg: 'rgb(32, 32, 35)', color: 'rgba(255, 255, 255, 0.92)'},
-  // };
+  let isDark: boolean = true;
+  let mainRef: HTMLElement;
+  setContext(key, {
+    getisDark: (): boolean => isDark,
+    getmainRef: (): HTMLElement => mainRef,
+  });
+
+  onMount(() => {
+    if (
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      mainRef.classList.add('dark');
+      isDark = true;
+    } else {
+      mainRef.classList.remove('dark');
+      isDark = false;
+    }
+  });
 </script>
 
-<SvelteUIProvider withGlobalStyles themeObserver={isDark ? 'dark' : 'light'}>
-  <main>
-    <Navbar {toggleTheme} />
-    <Editor />
-  </main>
-</SvelteUIProvider>
+<main class="w-screen h-screen fixed dark" bind:this={mainRef}>
+  <Navbar />
+  <Editor />
+</main>
 
 <style global lang="postcss">
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
-  body {
-    padding: 0;
+
+  main {
+    background-color: rgb(240, 231, 219);
+    color: rgb(26, 32, 44);
+    transition: 0.3s;
+  }
+  main.dark {
+    background-color: rgb(32, 32, 35);
+    color: rgba(255, 255, 255, 0.92);
   }
 </style>

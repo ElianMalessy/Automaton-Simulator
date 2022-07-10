@@ -11,8 +11,8 @@ module.exports = {
     purgeLayersByDefault: true,
     removeDeprecatedGapUtilities: true,
   },
-  purge: {
-    content: ['./src/**/*.svelte'],
-    enabled: production,
-  },
+  darkMode: 'class',
+
+  content: ['./src/**/*.svelte'],
+  enabled: production,
 };
