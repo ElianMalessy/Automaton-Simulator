@@ -7,5 +7,5 @@
 </script>
 
 <div class="mt-3 px-6">
-  <AceEditor width="40vw" height="70vh" lang="elm" theme="monokai" value={text} options={{showPrintMargin: false}} />
+  <AceEditor width="40vw" height="80vh" lang="elm" theme="monokai" value={text} options={{showPrintMargin: false}} />
 </div>

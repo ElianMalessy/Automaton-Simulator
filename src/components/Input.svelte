@@ -18,9 +18,8 @@
   let value: string = '';
 </script>
 
-<div class="flex align-center ml-5">
-  <Textfield bind:value label="Trailing Icon">
-    <HelperText slot="helper">Helper Text</HelperText>
+<div class="flex align-center ml-10">
+  <Textfield bind:value label="Input String">
     <IconButton on:click={() => (value = '')} slot="trailingIcon">
       <Icon component={Svg} viewBox="0 0 24 24">
         {#if isDark}
@@ -31,6 +30,4 @@
       </Icon>
     </IconButton>
   </Textfield>
-
-  <pre class="status">Value: {value}</pre>
 </div>
