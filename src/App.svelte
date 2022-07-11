@@ -1,20 +1,23 @@
 <script lang="ts">
   import {onMount} from 'svelte/internal';
   import {setContext} from 'svelte';
-  import {Writable, writable} from 'svelte/store';
+  import {writable} from 'svelte/store';
+  import type {Writable} from 'svelte/store';
 
   import {key} from './context/key';
 
   import Editor from './components/Editor.svelte';
   import Navbar from './components/Navbar.svelte';
 
-  import '../node_modules/svelte-material-ui/bare.css';
+  //import '../node_modules/svelte-material-ui/bare.css';
 
-  let isDark: boolean = true;
+  let isDark: Writable<boolean> = writable(true);
   let mainRef: HTMLElement;
+  let theme: Writable<string> = writable('monokai');
   setContext(key, {
-    getisDark: (): boolean => isDark,
-    getmainRef: (): HTMLElement => mainRef,
+    getIsDark: (): Writable<boolean> => isDark,
+    getMainRef: (): HTMLElement => mainRef,
+    getTheme: (): Writable<string> => theme,
   });
 
   onMount(() => {
@@ -23,10 +26,10 @@
       (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
       mainRef.classList.add('dark');
-      isDark = true;
+      isDark.set(true);
     } else {
       mainRef.classList.remove('dark');
-      isDark = false;
+      isDark.set(false);
     }
   });
 </script>
@@ -41,13 +44,13 @@
   @tailwind components;
   @tailwind utilities;
 
-  main {
+  /* main {
     background-color: rgb(240, 231, 219);
     color: rgb(26, 32, 44);
     transition: 0.3s;
   }
   main.dark {
     background-color: rgb(32, 32, 35);
-    color: rgba(255, 255, 255, 0.92);
-  }
+    color: rgba(255, 255, 255, 0.92) !important;
+  } */
 </style>

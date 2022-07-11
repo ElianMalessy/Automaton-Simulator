@@ -1,5 +1,6 @@
 <script lang="ts">
   import {getContext, onMount} from 'svelte';
+  import type {Writable} from 'svelte/store';
 
   import Textfield from '@smui/textfield';
   import IconButton, {Icon} from '@smui/icon-button';
@@ -9,20 +10,20 @@
 
   import {key} from '../context/key';
 
-  const {getisDark} = getContext(key);
-  let isDark: boolean;
+  const {getIsDark} = getContext(key);
+  let isDark: Writable<boolean>;
   onMount(() => {
-    isDark = getisDark();
+    isDark = getIsDark();
   });
 
   let value: string = '';
 </script>
 
-<div class="flex align-center ml-12">
+<div class="flex align-center ml-8">
   <Textfield bind:value label="Input String">
     <IconButton on:click={() => (value = '')} slot="trailingIcon">
       <Icon component={Svg} viewBox="0 0 24 24">
-        {#if isDark}
+        {#if $isDark}
           <path fill="currentColor" d={mdiTrashCanOutline} />
         {:else}
           <path fill="currentColor" d={mdiTrashCan} />
