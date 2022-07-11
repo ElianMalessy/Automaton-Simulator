@@ -9,7 +9,7 @@
   import Editor from './components/Editor.svelte';
   import Navbar from './components/Navbar.svelte';
 
-  //import '../node_modules/svelte-material-ui/bare.css';
+  import '../node_modules/svelte-material-ui/bare.css';
 
   let isDark: Writable<boolean> = writable(true);
   let mainRef: HTMLElement;
@@ -44,7 +44,7 @@
   @tailwind components;
   @tailwind utilities;
 
-  /* main {
+  main {
     background-color: rgb(240, 231, 219);
     color: rgb(26, 32, 44);
     transition: 0.3s;
@@ -52,5 +52,5 @@
   main.dark {
     background-color: rgb(32, 32, 35);
     color: rgba(255, 255, 255, 0.92) !important;
-  } */
+  }
 </style>

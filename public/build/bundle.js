@@ -25619,7 +25619,7 @@ background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgb
     			t = space();
     			create_component(editor.$$.fragment);
     			attr_dev(main, "class", "w-screen h-screen fixed dark");
-    			add_location(main, file, 28, 0, 870);
+    			add_location(main, file, 28, 0, 868);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
