@@ -18,7 +18,7 @@
   let value: string = '';
 </script>
 
-<div class="flex align-center ml-10">
+<div class="flex align-center ml-12">
   <Textfield bind:value label="Input String">
     <IconButton on:click={() => (value = '')} slot="trailingIcon">
       <Icon component={Svg} viewBox="0 0 24 24">
