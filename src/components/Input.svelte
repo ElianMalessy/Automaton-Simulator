@@ -17,10 +17,11 @@
   });
 
   let value: string = '';
+  export {value};
 </script>
 
 <div class="flex align-center ml-8">
-  <Textfield bind:value label="Input String">
+  <Textfield bind:value label={"Input String"}>
     <IconButton on:click={() => (value = '')} slot="trailingIcon">
       <Icon component={Svg} viewBox="0 0 24 24">
         {#if $isDark}
@@ -31,4 +32,6 @@
       </Icon>
     </IconButton>
   </Textfield>
+  Hi {value}
 </div>
+

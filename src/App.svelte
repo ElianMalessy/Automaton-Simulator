@@ -6,14 +6,15 @@
 
   import {key} from './context/key';
 
-  import Editor from './components/Editor.svelte';
   import Navbar from './components/Navbar.svelte';
+  import Display from './components/Display.svelte';
 
   import '../node_modules/svelte-material-ui/bare.css';
 
   let isDark: Writable<boolean> = writable(true);
   let mainRef: HTMLElement;
   let theme: Writable<string> = writable('monokai');
+
   setContext(key, {
     getIsDark: (): Writable<boolean> => isDark,
     getMainRef: (): HTMLElement => mainRef,
@@ -36,7 +37,7 @@
 
 <main class="w-screen h-screen fixed dark" bind:this={mainRef}>
   <Navbar />
-  <Editor />
+  <Display />
 </main>
 
 <style global lang="postcss">
