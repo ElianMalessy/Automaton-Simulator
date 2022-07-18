@@ -1,16 +1,8 @@
 <script lang="ts">
-  import {getContext, onMount} from 'svelte';
-  import {writable} from 'svelte/store';
-  import type {Writable} from 'svelte/store';
   import Select, {Option} from '@smui/select';
 
-  import {key} from '../context/key';
+  import {theme} from './../context/store';
 
-  const {getTheme} = getContext(key);
-  let theme: Writable<string>;
-  onMount(() => {
-    theme = getTheme();
-  });
   let val: string = 'DFA';
 </script>
 

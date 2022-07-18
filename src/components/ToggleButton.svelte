@@ -1,19 +1,18 @@
 <script lang="ts">
   import {getContext, onMount} from 'svelte';
-  import type {Writable} from 'svelte/store';
   import IconButton, {Icon} from '@smui/icon-button';
   import {Svg} from '@smui/common/elements';
   import {mdiWeatherNight, mdiWeatherSunny} from '@mdi/js';
 
   import {key} from '../context/key';
+  import {isDark} from '../context/store';
 
-  const {getIsDark, getMainRef} = getContext(key);
-  let isDark: Writable<boolean>;
+  const {getMainRef} = getContext(key);
   let mainRef: HTMLElement;
   onMount(() => {
-    isDark = getIsDark();
     mainRef = getMainRef();
   });
+
   function toggleTheme(): void {
     mainRef.classList.toggle('dark');
     isDark.set(!$isDark);

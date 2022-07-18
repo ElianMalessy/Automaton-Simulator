@@ -1,23 +1,17 @@
 <script lang="ts">
   import {onMount} from 'svelte/internal';
   import {setContext} from 'svelte';
-  import {writable} from 'svelte/store';
-  import type {Writable} from 'svelte/store';
 
   import {key} from './context/key';
   import Navbar from './components/Navbar.svelte';
   import Display from './components/Display.svelte';
-
+  import {isDark} from './context/store';
   import '../node_modules/svelte-material-ui/bare.css';
 
-  let isDark: Writable<boolean> = writable(true);
   let mainRef: HTMLElement;
-  let theme: Writable<string> = writable('monokai');
 
   setContext(key, {
-    getIsDark: (): Writable<boolean> => isDark,
     getMainRef: (): HTMLElement => mainRef,
-    getTheme: (): Writable<string> => theme,
   });
 
   onMount(() => {
