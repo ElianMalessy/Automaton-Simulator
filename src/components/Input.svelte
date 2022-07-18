@@ -38,7 +38,6 @@
   </Textfield>
   <div>
   Input: {textinput}   
-  Shit: {$stringinput}
   {#if String(textinput).slice(-3) === "000"}
 	<p style="color: green"> Accepted</p>
   {:else}
