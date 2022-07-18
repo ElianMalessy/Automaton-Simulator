@@ -14,7 +14,7 @@
 </script>
 
 <div class="flex align-center ml-8">
-  <Textfield bind:value={textInput} label={'Input String'}>
+  <Textfield bind:value={textInput} label={'Input String'} id="input">
     <IconButton on:click={() => (textInput = '')} slot="trailingIcon">
       <Icon component={Svg} viewBox="0 0 24 24">
         {#if $isDark}
