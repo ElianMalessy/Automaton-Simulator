@@ -15,14 +15,13 @@
     import 'brace/theme/monokai';
   
     import {key} from '../context/key';
-    import {value} from '../context/value';
-  
+    import {stringinput} from '../context/store';
+    
     const {getTheme} = getContext(key);
     let theme: Writable<string>;
     onMount(() => {
       theme = getTheme();
     });
-  
     export let text: string = '';
   </script>
 
@@ -35,7 +34,7 @@
     {/if}
   </div>
   <div class="column">
-      <h1>Hi {value}</h1>
+    Hi {$stringinput}
   </div>
 </div>
   

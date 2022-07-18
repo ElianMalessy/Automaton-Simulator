@@ -9,6 +9,7 @@
   import {mdiTrashCanOutline, mdiTrashCan} from '@mdi/js';
 
   import {key} from '../context/key';
+  import {stringinput} from '../context/store';
 
   const {getIsDark} = getContext(key);
   let isDark: Writable<boolean>;
@@ -16,13 +17,16 @@
     isDark = getIsDark();
   });
 
-  let value: string = '';
-  export {value};
+  let textinput = " ";
+
+  export function reset() {
+    stringinput.set(textinput);
+	}
 </script>
 
 <div class="flex align-center ml-8">
-  <Textfield bind:value label={"Input String"}>
-    <IconButton on:click={() => (value = '')} slot="trailingIcon">
+  <Textfield type="number" bind:value={textinput} label={"Input String"}>
+    <IconButton on:click={() => (textinput = '')} slot="trailingIcon">
       <Icon component={Svg} viewBox="0 0 24 24">
         {#if $isDark}
           <path fill="currentColor" d={mdiTrashCanOutline} />
@@ -32,6 +36,14 @@
       </Icon>
     </IconButton>
   </Textfield>
-  Hi {value}
+  <div>
+  Input: {textinput}   
+  Shit: {$stringinput}
+  {#if String(textinput).slice(-3) === "000"}
+	<p style="color: green"> Accepted</p>
+  {:else}
+    <p style="color: red"> Declined</p>
+  {/if}
+  </div>
 </div>
 
