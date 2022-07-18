@@ -5,7 +5,6 @@
   import type {Writable} from 'svelte/store';
 
   import {key} from './context/key';
-
   import Editor from './components/Editor.svelte';
   import Navbar from './components/Navbar.svelte';
 

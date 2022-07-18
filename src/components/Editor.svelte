@@ -1,7 +1,7 @@
 <script lang="ts">
   import {getContext, onMount} from 'svelte';
   import type {Writable} from 'svelte/store';
-  import {AceEditor} from '../../node_modules/svelte-ace';
+  import {AceEditor} from 'svelte-ace';
   import 'brace/mode/elm';
   import 'brace/theme/ambiance';
   import 'brace/theme/chaos';

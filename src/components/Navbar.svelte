@@ -1,7 +1,7 @@
 <script lang="ts">
   import {H1} from 'attractions';
 
-  import RadioGroup from './RadioGroup.svelte';
+  import RadioGroup from './AutomatonSelector.svelte';
   import ToggleButton from './ToggleButton.svelte';
   import Input from './Input.svelte';
 </script>
